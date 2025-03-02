@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/otp/otpscreen.dart';
 import 'package:whatsapp_clone/widgets/uihelper.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -7,7 +8,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController phoneController=TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   String selectedcountry = "Pakistan";
 
   List<String> countries = [
@@ -144,14 +145,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                SizedBox(width: 10,),
+                SizedBox(width: 10),
                 SizedBox(
                   width: 240,
                   child: Padding(
                     padding: const EdgeInsets.only(top: 5.0),
                     child: TextField(
                       keyboardType: TextInputType.number,
-                    controller: phoneController,
+                      controller: phoneController,
                       decoration: InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Color(0XFF00A884)),
@@ -168,8 +169,33 @@ class _LoginScreenState extends State<LoginScreen> {
           ],
         ),
       ),
-      floatingActionButton: UiHelper.customButton(onPress: (){}, buttonname: "Next"),
+      floatingActionButton: UiHelper.customButton(
+        onPress: () {
+          login(phoneController.text.toString());
+        },
+        buttonname: "Next",
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
+  }
+
+  login(String phonenumber) {
+    if (phonenumber == "") {
+      return ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Enter Phone Number'),
+          backgroundColor: Color(0XFF00A884),
+        ),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder:
+              (context) =>
+                  OtpScreen(phonenumber: phoneController.text.toString()),
+        ),
+      );
+    }
   }
 }
