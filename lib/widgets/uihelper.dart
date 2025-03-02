@@ -19,7 +19,11 @@ class UiHelper {
         ),
         child: Text(
           buttonname,
-          style: TextStyle(fontSize: 14, color: Colors.white),
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
