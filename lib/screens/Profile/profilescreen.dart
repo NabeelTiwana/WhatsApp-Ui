@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:whatsapp_clone/screens/home/homescreen.dart';
 import 'package:whatsapp_clone/widgets/uihelper.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -38,18 +39,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onTap: () {
                 _openButtom(context);
               },
-              child: pickedimage==null? CircleAvatar(
-                radius: 70,
-                backgroundColor: Color(0XFFD9D9D9),
-                child: Image.asset(
-                  'assets/images/camera.png',
-                  height: 50,
-                  fit: BoxFit.cover,
-                ),
-              ):CircleAvatar(
-                radius: 70,
-                backgroundImage: FileImage(pickedimage!),
-              ),
+              child:
+                  pickedimage == null
+                      ? CircleAvatar(
+                        radius: 70,
+                        backgroundColor: Color(0XFFD9D9D9),
+                        child: Image.asset(
+                          'assets/images/camera.png',
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                      : CircleAvatar(
+                        radius: 70,
+                        backgroundImage: FileImage(pickedimage!),
+                      ),
             ),
             SizedBox(height: 40),
             Row(
@@ -79,7 +83,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
       floatingActionButton: UiHelper.customButton(
-        onPress: () {},
+        onPress: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
+        },
         buttonname: 'Next',
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
