@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/home/contact/contactscreen.dart';
 import 'package:whatsapp_clone/widgets/uihelper.dart';
 
 class ChatsScreen extends StatelessWidget {
@@ -135,7 +136,9 @@ class ChatsScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0XFF008665),
-        onPressed: () {},
+        onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>ContactScreen()));
+        },
         child: Image.asset("assets/images/chatbutton.png"),
       ),
     );

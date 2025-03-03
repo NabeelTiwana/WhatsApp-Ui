@@ -29,15 +29,14 @@ class HomeScreen extends StatelessWidget {
             text: "WhatsApp",
             height: 20,
             color: Colors.white,
+            fontweight: FontWeight.bold,
           ),
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: IconButton(
-                onPressed: () {},
-                icon: Image.asset('assets/images/Search.png'),
-              ),
+            IconButton(
+              onPressed: () {},
+              icon: Image.asset('assets/images/Search.png'),
             ),
+            IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_sharp)),
           ],
         ),
         body: TabBarView(
